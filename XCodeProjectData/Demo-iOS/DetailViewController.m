@@ -366,6 +366,16 @@ CATextLayer *textLayerForLastTappedLayer;
 		}
 		else
 			document = [SVGKImage imageNamed:[name stringByAppendingPathExtension:@"svg"]];
+        
+        // TODO: parse here what is interesting
+        
+//        NSDictionary *layersDict = document.dictionaryOfLayers;
+//        NSArray *keys = [layersDict allKeys];
+//        
+//        for (NSString *key in keys) {
+//            NSLog(@)
+//        }
+        
 		
 #if ALLOW_2X_STYLE_SCALING_OF_SVGS_AS_AN_EXAMPLE
 		if( shouldScaleTimesTwo )

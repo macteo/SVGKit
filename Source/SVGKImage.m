@@ -622,6 +622,11 @@ static NSMutableDictionary* globalSVGKImageCache;
 - (void) addSVGLayerTree:(CALayer*) layer withIdentifier:(NSString*) layerID toDictionary:(NSMutableDictionary*) layersByID
 {
 	// TODO: consider removing this method: it caches the lookup of individual items in the CALayerTree. It's a performance boost, but is it enough to be worthwhile?
+    
+    if (!layerID) {
+        layerID = @"something";
+    }
+    
 	[layersByID setValue:layer forKey:layerID];
 	
 	if ( [layer.sublayers count] < 1 )
@@ -650,6 +655,12 @@ static NSMutableDictionary* globalSVGKImageCache;
 	
 	CALayer* rootLayer = self.CALayerTree;
 	
+    NSString *identifier = self.DOMTree.identifier;
+    
+    if (!identifier) {
+        identifier = @"root";
+    }
+    
 	[self addSVGLayerTree:rootLayer withIdentifier:self.DOMTree.identifier toDictionary:layersByElementId];
 	
 	DDLogVerbose(@"[%@] ROOT element id: %@ => layer: %@", [self class], self.DOMTree.identifier, rootLayer);
