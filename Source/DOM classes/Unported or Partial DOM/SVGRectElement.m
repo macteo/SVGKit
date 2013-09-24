@@ -6,7 +6,7 @@
 
 @interface SVGRectElement ()
 
-void CGPathAddRoundedRectSVG (CGMutablePathRef path, CGRect rect, CGFloat radiusX, CGFloat radiusY);
+static void CGPathAddRoundedRectSVG (CGMutablePathRef path, CGRect rect, CGFloat radiusX, CGFloat radiusY);
 
 @end
 
@@ -24,7 +24,8 @@ void CGPathAddRoundedRectSVG (CGMutablePathRef path, CGRect rect, CGFloat radius
 
 // adapted from http://www.cocoanetics.com/2010/02/drawing-rounded-rectangles/
 
-void CGPathAddRoundedRectSVG (CGMutablePathRef path, CGRect rect, CGFloat radiusX, CGFloat radiusY) {
+
+static void CGPathAddRoundedRectSVG (CGMutablePathRef path, CGRect rect, CGFloat radiusX, CGFloat radiusY) {
 	CGRect innerRect = CGRectInset(rect, radiusX, radiusY);
 	
 	CGFloat innerRight = innerRect.origin.x + innerRect.size.width;
@@ -66,23 +67,23 @@ void CGPathAddRoundedRectSVG (CGMutablePathRef path, CGRect rect, CGFloat radius
 	[super postProcessAttributesAddingErrorsTo:parseResult];
 	
 	if( [[self getAttribute:@"x"] length] > 0 )
-	_x = [SVGLength svgLengthFromNSString:[self getAttribute:@"x"]];
+		_x = [SVGLength svgLengthFromNSString:[self getAttribute:@"x"]];
 	
 	if( [[self getAttribute:@"y"] length] > 0 )
-	_y = [SVGLength svgLengthFromNSString:[self getAttribute:@"y"]];
+		_y = [SVGLength svgLengthFromNSString:[self getAttribute:@"y"]];
 	
 	if( [[self getAttribute:@"width"] length] > 0 )
-	_width = [SVGLength svgLengthFromNSString:[self getAttribute:@"width"]];
+		_width = [SVGLength svgLengthFromNSString:[self getAttribute:@"width"]];
 	
 	if( [[self getAttribute:@"height"] length] > 0 )
-	_height = [SVGLength svgLengthFromNSString:[self getAttribute:@"height"]];
+		_height = [SVGLength svgLengthFromNSString:[self getAttribute:@"height"]];
 	
 	if( [[self getAttribute:@"rx"] length] > 0 )
-	_rx = [SVGLength svgLengthFromNSString:[self getAttribute:@"rx"]];
+		_rx = [SVGLength svgLengthFromNSString:[self getAttribute:@"rx"]];
 	
 	if( [[self getAttribute:@"ry"] length] > 0 )
-	_ry = [SVGLength svgLengthFromNSString:[self getAttribute:@"ry"]];
-
+		_ry = [SVGLength svgLengthFromNSString:[self getAttribute:@"ry"]];
+	
 	/**
 	 Create a square OR rounded rectangle as a CGPath
 	 
