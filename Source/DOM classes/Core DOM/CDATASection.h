@@ -8,10 +8,10 @@
  */
 #import <Foundation/Foundation.h>
 
-@class Text;
-#import "Text.h"
+@class SVGText;
+#import "SVGText.h"
 
-@interface CDATASection : Text
+@interface CDATASection : SVGText
 
 - (id)initWithValue:(NSString*) v;
 

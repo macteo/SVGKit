@@ -99,8 +99,8 @@
 		66E863BD1688C2780059C9C4 /* NodeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E8632C1688C2770059C9C4 /* NodeList.m */; };
 		66E863BE1688C2780059C9C4 /* ProcessingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E8632D1688C2770059C9C4 /* ProcessingInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66E863BF1688C2780059C9C4 /* ProcessingInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E8632E1688C2770059C9C4 /* ProcessingInstruction.m */; };
-		66E863C01688C2780059C9C4 /* Text.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E8632F1688C2770059C9C4 /* Text.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		66E863C11688C2780059C9C4 /* Text.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E863301688C2770059C9C4 /* Text.m */; };
+		66E863C01688C2780059C9C4 /* SVGText.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E8632F1688C2770059C9C4 /* SVGText.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66E863C11688C2780059C9C4 /* SVGText.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E863301688C2770059C9C4 /* SVGText.m */; };
 		66E863C21688C2780059C9C4 /* SVGAngle.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E863321688C2770059C9C4 /* SVGAngle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66E863C31688C2780059C9C4 /* SVGAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E863331688C2770059C9C4 /* SVGAngle.m */; };
 		66E863C41688C2780059C9C4 /* SVGDefsElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E863341688C2770059C9C4 /* SVGDefsElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -322,8 +322,8 @@
 		66E8632C1688C2770059C9C4 /* NodeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeList.m; sourceTree = "<group>"; };
 		66E8632D1688C2770059C9C4 /* ProcessingInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessingInstruction.h; sourceTree = "<group>"; };
 		66E8632E1688C2770059C9C4 /* ProcessingInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessingInstruction.m; sourceTree = "<group>"; };
-		66E8632F1688C2770059C9C4 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
-		66E863301688C2770059C9C4 /* Text.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Text.m; sourceTree = "<group>"; };
+		66E8632F1688C2770059C9C4 /* SVGText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGText.h; sourceTree = "<group>"; };
+		66E863301688C2770059C9C4 /* SVGText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGText.m; sourceTree = "<group>"; };
 		66E863321688C2770059C9C4 /* SVGAngle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGAngle.h; sourceTree = "<group>"; };
 		66E863331688C2770059C9C4 /* SVGAngle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGAngle.m; sourceTree = "<group>"; };
 		66E863341688C2770059C9C4 /* SVGDefsElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGDefsElement.h; sourceTree = "<group>"; };
@@ -624,8 +624,8 @@
 				66E8632C1688C2770059C9C4 /* NodeList.m */,
 				66E8632D1688C2770059C9C4 /* ProcessingInstruction.h */,
 				66E8632E1688C2770059C9C4 /* ProcessingInstruction.m */,
-				66E8632F1688C2770059C9C4 /* Text.h */,
-				66E863301688C2770059C9C4 /* Text.m */,
+				66E8632F1688C2770059C9C4 /* SVGText.h */,
+				66E863301688C2770059C9C4 /* SVGText.m */,
 				6694BB7A16967407007D0947 /* DOMGlobalSettings.h */,
 			);
 			path = "Core DOM";
@@ -837,7 +837,7 @@
 				66E863BB1688C2780059C9C4 /* NodeList+Mutable.h in Headers */,
 				66E863BC1688C2780059C9C4 /* NodeList.h in Headers */,
 				66E863BE1688C2780059C9C4 /* ProcessingInstruction.h in Headers */,
-				66E863C01688C2780059C9C4 /* Text.h in Headers */,
+				66E863C01688C2780059C9C4 /* SVGText.h in Headers */,
 				66E863C21688C2780059C9C4 /* SVGAngle.h in Headers */,
 				66E863C41688C2780059C9C4 /* SVGDefsElement.h in Headers */,
 				66E863C61688C2780059C9C4 /* SVGDocument.h in Headers */,
@@ -1017,7 +1017,7 @@
 				66E863BA1688C2780059C9C4 /* Node.m in Sources */,
 				66E863BD1688C2780059C9C4 /* NodeList.m in Sources */,
 				66E863BF1688C2780059C9C4 /* ProcessingInstruction.m in Sources */,
-				66E863C11688C2780059C9C4 /* Text.m in Sources */,
+				66E863C11688C2780059C9C4 /* SVGText.m in Sources */,
 				66E863C31688C2780059C9C4 /* SVGAngle.m in Sources */,
 				66E863C51688C2780059C9C4 /* SVGDefsElement.m in Sources */,
 				66E863C71688C2780059C9C4 /* SVGDocument.m in Sources */,

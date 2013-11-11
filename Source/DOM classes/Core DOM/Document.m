@@ -33,9 +33,9 @@
 	return [[DocumentFragment alloc] init];
 }
 
--(Text*) createTextNode:(NSString*) data
+-(SVGText*) createTextNode:(NSString*) data
 {
-	return [[Text alloc] initWithValue:data];
+	return [[SVGText alloc] initWithValue:data];
 }
 
 -(Comment*) createComment:(NSString*) data

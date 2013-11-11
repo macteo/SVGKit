@@ -1,14 +1,14 @@
 //
-//  Text.m
+//  SVGText.m
 //  SVGKit
 //
 //  Created by adam on 22/05/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Text.h"
+#import "SVGText.h"
 
-@implementation Text
+@implementation SVGText
 
 - (id)initWithValue:(NSString*) v
 {
@@ -18,7 +18,7 @@
     }
     return self;
 }
--(Text*) splitText:(unsigned long) offset;
+-(SVGText*) splitText:(unsigned long) offset;
 {
 	NSAssert( FALSE, @"Not implemented yet" );
 	return nil;
