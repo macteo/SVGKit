@@ -87,7 +87,7 @@
 				{
 					valueAsInches = self.internalValue * 12.0f / 72.0f;
 				}break;
-				
+					
 				default:
 				{
 					NSAssert( FALSE, @"This line is impossible but Apple's compiler is crap" );
@@ -116,14 +116,14 @@
 				{
 					return valueAsInches * self.pixelsPerInch;
 				}break;
-				
+					
 				default:
 				{
 					NSAssert( FALSE, @"Asked to convert a value in centimetres to an incompatible unit type (%i)", unitType );
 				}
 			}
 		} break;
-		
+			
 		case CSS_DEG:
 		case CSS_GRAD:
 		case CSS_RAD:
@@ -177,7 +177,7 @@
 			else
 				NSAssert( FALSE, @"Asked to convert a Percentage value to a different type (%i)", unitType );
 		}break;
-		
+			
 		default:
 		{
 			NSAssert( FALSE, @"Asked to convert a (%i) value to a (%i) (couldn't find a valid conversion route). Float (4 d.p.) = %2.4f, String = %@", self.primitiveType, unitType, self.internalValue, self.internalString );
@@ -225,7 +225,7 @@
 	
 	/** the css text value has been set, so we need to split the elements up and save them in the internal array */
 	if( _cssText == nil
-	|| _cssText.length == 0 )
+	   || _cssText.length == 0 )
 	{
 		self.internalValue = 0.0f;
 		self.internalString = @"";
@@ -286,7 +286,7 @@
 		{
 			/* Option 2: it's a string - or corrupt, which we're not going to handle here */
 #if DEBUG_DOM_PARSING
-			NSLog(@"[%@] WARNING: not bothering to work out 'what kind of CSS string' this string is. CSS is stupid. String = %@", [self class], _cssText );
+			DDLogVerbose(@"[%@] WARNING: not bothering to work out 'what kind of CSS string' this string is. CSS is stupid. String = %@", [self class], _cssText );
 #endif
 			[self setStringValue:CSS_STRING stringValue:_cssText]; // -------- NB: we allow any string-to-string conversion, so it's not a huge problem that we dont correctly detect "url" versus "other kind of string". I hate CSS Parsing...
 		}

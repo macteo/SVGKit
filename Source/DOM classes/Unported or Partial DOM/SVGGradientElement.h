@@ -22,11 +22,12 @@
  */
 
 #import "SVGElement.h"
-#import "SVGLayeredElement.h"
 
+#import "SVGRect.h"
 #import "SVGGradientStop.h"
+#import "SVGTransformable.h"
 
-@interface SVGGradientElement : SVGElement /* NB: does NOT implemente "SVGLayeredElement" because spec says that these specifically NEVER appear in the output */
+@interface SVGGradientElement : SVGElement <SVGTransformable> /* NB: does NOT implemente "SVGLayeredElement" because spec says that these specifically NEVER appear in the output */
 {
     @public
     BOOL radial; /* FIXME: not in SVG Spec */
@@ -42,6 +43,6 @@
 
 -(void)addStop:(SVGGradientStop *)gradientStop; /* FIXME: not in SVG Spec */
 
--(CAGradientLayer *)newGradientLayerForObjectRect:(CGRect) objectRect viewportRect:(CGRect) viewportRect;
+-(CAGradientLayer *)newGradientLayerForObjectRect:(CGRect) objectRect viewportRect:(SVGRect) viewportRect;
 
 @end

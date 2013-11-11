@@ -17,7 +17,7 @@
 
 /**
  Used to insert a new rule into the style sheet. The new rule now becomes part of the cascade.
-
+ 
  Parameters
  
  rule of type DOMString
@@ -37,7 +37,7 @@
 	NSCharacterSet *whitespaceSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
 	rule = [rule stringByTrimmingCharactersInSet:whitespaceSet];
 	
-	//             NSLog(@"A substringie %@", idStyleString);
+	//             DDLogVerbose(@"A substringie %@", idStyleString);
 	
 	NSArray* stringSplitContainer = [rule componentsSeparatedByString:@"{"];
 	if( [stringSplitContainer count] >= 2 ) //not necessary unless using shitty svgs
@@ -67,7 +67,11 @@
     self = [super init];
     if (self)
 	{
-		self.cssRules = [[[CSSRuleList alloc]init] autorelease];
+		{
+			CSSRuleList *tmpRuleList = [[CSSRuleList alloc] init];
+			self.cssRules = tmpRuleList;
+			[tmpRuleList release];
+		}
 		@autoreleasepool { //creating lots of autoreleased strings, not helpful for older devices
 			
 			/**
@@ -89,7 +93,7 @@
 				
 			}
 		}
-	
+		
     }
     return self;
 }

@@ -18,6 +18,7 @@
 @synthesize value;
 @synthesize valueInSpecifiedUnits;
 @synthesize valueAsString;
+@synthesize internalCSSPrimitiveValue;
 
 - (void)dealloc {
     self.valueAsString = nil;
@@ -93,20 +94,20 @@
 
 +(SVGLength*) svgLengthZero
 {
-	SVGLength* result = [[[SVGLength alloc] initWithCSSPrimitiveValue:nil] autorelease];
-	
-	return result;
+	return [[[SVGLength alloc] initWithCSSPrimitiveValue:nil] autorelease];
 }
 
 static float cachedDevicePixelsPerInch;
 +(SVGLength*) svgLengthFromNSString:(NSString*) s
 {
-	CSSPrimitiveValue* pv = [[[CSSPrimitiveValue alloc] init] autorelease];
+	CSSPrimitiveValue* pv = [[CSSPrimitiveValue alloc] init];
 	
 	pv.pixelsPerInch = cachedDevicePixelsPerInch;
 	pv.cssText = s;
 	
 	SVGLength* result = [[[SVGLength alloc] initWithCSSPrimitiveValue:pv] autorelease];
+	
+	[pv release];
 	
 	return result;
 }
@@ -125,6 +126,8 @@ static float cachedDevicePixelsPerInch;
 
 +(float) pixelsPerInchForCurrentDevice
 {
+#if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
+	
 	/** Using this as reference: http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density#Apple
 	 */
 	
@@ -136,12 +139,12 @@ static float cachedDevicePixelsPerInch;
 	free(machine);
 	
 	if( [platform hasPrefix:@"iPhone1"]
-	|| [platform hasPrefix:@"iPhone2"]
-	|| [platform hasPrefix:@"iPhone3"])
+	   || [platform hasPrefix:@"iPhone2"]
+	   || [platform hasPrefix:@"iPhone3"])
 		return 163.0f;
 	
 	if( [platform hasPrefix:@"iPhone4"]
-	|| [platform hasPrefix:@"iPhone5"])
+	   || [platform hasPrefix:@"iPhone5"])
 		return 326.0f;
 	
 	if( [platform hasPrefix:@"iPhone"]) // catch-all for higher-end devices not yet existing
@@ -166,10 +169,10 @@ static float cachedDevicePixelsPerInch;
 	}
 	
 	if( [platform hasPrefix:@"iPad1"]
-	|| [platform hasPrefix:@"iPad2"])
+	   || [platform hasPrefix:@"iPad2"])
 		return 132.0f;
 	if( [platform hasPrefix:@"iPad3"]
-	|| [platform hasPrefix:@"iPad4"])
+	   || [platform hasPrefix:@"iPad4"])
 		return 264.0f;
 	if( [platform hasPrefix:@"iPad"]) // catch-all for higher-end devices not yet existing
 	{
@@ -179,12 +182,16 @@ static float cachedDevicePixelsPerInch;
 	
 	if( [platform hasPrefix:@"x86_64"])
 	{
-		NSLog(@"[%@] WARNING: you are running on the simulator; it's impossible for us to calculate centimeter/millimeter/inches units correctly", [self class]);
+		DDLogCWarn(@"[%@] WARNING: you are running on the simulator; it's impossible for us to calculate centimeter/millimeter/inches units correctly", [self class]);
 		return 132.0f; // Simulator, running on desktop machine
 	}
 	
 	NSAssert(FALSE, @"Cannot determine the PPI values for current device; returning 0.0f - hopefully this will crash your code (you CANNOT run SVG's that use CM/IN/MM etc until you fix this)" );
 	return 0.0f; // Bet you'll get a divide by zero here...
+#else
+	//TODO: port to OS X.
+	return 72.0;
+#endif
 }
 
 @end

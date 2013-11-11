@@ -2,10 +2,11 @@
 #import "SVGElementInstanceList_Internal.h"
 
 @implementation SVGElementInstanceList
+@synthesize internalArray;
 
 - (void)dealloc {
-  self.internalArray = nil;
-  [super dealloc];
+	self.internalArray = nil;
+	[super dealloc];
 }
 
 - (id)init
