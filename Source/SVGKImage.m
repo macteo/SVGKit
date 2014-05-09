@@ -13,6 +13,7 @@
 
 #import "SVGKSourceLocalFile.h"
 #import "SVGKSourceURL.h"
+#import "CALayer+SVGKitTeo.h"
 
 #if (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
 #define SVGKCreateSystemDefaultSpace() CGColorSpaceCreateDeviceRGB()
@@ -622,10 +623,11 @@ static NSMutableDictionary* globalSVGKImageCache;
 	{
 		if ([child conformsToProtocol:@protocol(ConverterSVGToCALayer)]) {
 			
-			CALayer *sublayer = [[self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child] autorelease];
-			
+            CALayer *sublayer = sublayer = [[self newLayerWithElement:(SVGElement<ConverterSVGToCALayer> *)child] autorelease];
 			if (!sublayer) {
 				continue;
+            } else {
+                sublayer.identifier = child.identifier;
             }
 			
 			[layer addSublayer:sublayer];
@@ -706,6 +708,7 @@ static NSMutableDictionary* globalSVGKImageCache;
     if (!layerID) {
         layerID = @"something";
     }
+    
     
 	[layersByID setValue:layer forKey:layerID];
 	

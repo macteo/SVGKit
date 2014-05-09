@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SVGKit"
-  s.version      = "1.1.1"
+  s.version      = "1.1.2"
   s.summary      = "SVGKit is a Cocoa framework for rendering SVG files natively: it's fast and powerful."
 
   s.description  = <<-DESC
@@ -72,7 +72,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/macteo/SVGKit.git", :tag => "v1.1.1" }
+  s.source       = { :git => "https://github.com/macteo/SVGKit.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
