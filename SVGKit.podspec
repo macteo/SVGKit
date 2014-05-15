@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SVGKit"
-  s.version      = "1.1.2"
+  s.version      = "1.1.3"
   s.summary      = "SVGKit is a Cocoa framework for rendering SVG files natively: it's fast and powerful."
 
   s.description  = <<-DESC
@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios
+  # s.platform     = :ios
   # s.platform     = :ios, '5.0'
 
   #  When using multiple platforms
@@ -82,9 +82,12 @@ Pod::Spec.new do |s|
   #  files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
-
+  #s.ios.source_files = 'Core/**/*.{h,m}', 'iOS/**/*.{h,m}'
+  #s.osx.source_files = 'Core/**/*.{h,m}', 'Mac/**/*.{h,m}', 'iOS/CAShapeLayerWithHitTest.{h,m}', 'iOS/CALayerWithChildHitTest.{h,m}'
+  
   s.source_files  = 'Source', 'Source/**/*.{h,m}'
-  s.exclude_files = "Source/AppKit additions/*.{h,m}"
+  s.ios.exclude_files = "Source/AppKit additions/*.{h,m}"
+  s.osx.exclude_files = "Source/UIKit additions/*.{h,m}"
   # s.public_header_files = 'Classes/**/*.h'
 
 
@@ -109,17 +112,10 @@ Pod::Spec.new do |s|
   #
 
   # s.framework  = 'SomeFramework'
-  s.frameworks = 'CoreText', 'CoreImage', 'QuartzCore', 'CoreGraphics', 'UIKit'
+  s.ios.frameworks = 'CoreText', 'CoreImage', 'QuartzCore', 'CoreGraphics', 'UIKit'
+  s.osx.frameworks = 'CoreText', 'QuartzCore', 'CoreGraphics'
 
   s.library   = 'xml2'
-  # s.libraries = 'iconv', 'xml2'
-
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If your library depends on compiler flags you can set them in the xcconfig hash
-  #  where they will only apply to your library. If you depend on other Podspecs
-  #  you can include multiple dependencies to ensure it works.
 
   s.requires_arc = false
 

@@ -13,5 +13,7 @@
 @property (nonatomic, readonly) CGFloat cy;
 @property (nonatomic, readonly) CGFloat rx;
 @property (nonatomic, readonly) CGFloat ry;
+@property (nonatomic, readonly) NSInteger beaconmajor;
+@property (nonatomic, readonly) NSInteger beaconminor;
 
 @end

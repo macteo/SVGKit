@@ -18,6 +18,8 @@
 @property (nonatomic, readwrite) CGFloat cy;
 @property (nonatomic, readwrite) CGFloat rx;
 @property (nonatomic, readwrite) CGFloat ry;
+@property (nonatomic, readwrite) NSInteger beaconmajor;
+@property (nonatomic, readwrite) NSInteger beaconminor;
 @end
 
 @implementation SVGEllipseElement
@@ -26,6 +28,8 @@
 @synthesize cy = _cy;
 @synthesize rx = _rx;
 @synthesize ry = _ry;
+@synthesize beaconmajor = _beaconmajor;
+@synthesize beaconminor = _beaconminor;
 
 - (void)postProcessAttributesAddingErrorsTo:(SVGKParseResult *)parseResult {
 	[super postProcessAttributesAddingErrorsTo:parseResult];
@@ -45,6 +49,18 @@
 	if( [[self getAttribute:@"r"] length] > 0 ) { // circle
 		self.ry = self.rx = [[self getAttribute:@"r"] SVGKCGFloatValue];
 	}
+    
+    if( [[self getAttribute:@"beaconmajor"] length] > 0 )
+    {
+        NSString * theString = [NSString stringWithFormat:@"%.0f", [[self getAttribute:@"beaconmajor"] SVGKCGFloatValue]];
+		self.beaconmajor = [theString integerValue];
+    }
+    
+    if( [[self getAttribute:@"beaconminor"] length] > 0 ){
+        NSString * theString = [NSString stringWithFormat:@"%.0f", [[self getAttribute:@"beaconminor"] SVGKCGFloatValue]];
+        self.beaconminor = [theString integerValue];
+    
+    }
 }
 
 -(CALayer *)newLayer

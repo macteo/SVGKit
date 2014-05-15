@@ -954,7 +954,7 @@
 		5540E66317387C9E004029EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "C.W. Betts";
 			};
 			buildConfigurationList = 5540E66617387C9E004029EF /* Build configuration list for PBXProject "SVGKit-OSX" */;

@@ -18,7 +18,7 @@
 
 #import "CharacterData.h"
 
-@interface Comment : CharacterData
+@interface SVGComment : CharacterData
 
 - (id)initWithValue:(NSString*) v;
 

@@ -6,7 +6,7 @@
 #import "SVGTitleElement.h"
 #import "SVGPathElement.h"
 #import "SVGUseElement.h"
-
+#import "SVGEllipseElement.h"
 #import "SVGSVGElement_Mutable.h" // so that changing .size can change the SVG's .viewport
 
 #import "SVGKParserSVG.h"
@@ -627,7 +627,16 @@ static NSMutableDictionary* globalSVGKImageCache;
 			if (!sublayer) {
 				continue;
             } else {
-                sublayer.identifier = child.identifier;
+                if ([child isKindOfClass:[SVGEllipseElement class]]) {
+                    SVGEllipseElement *ellipse = child;
+                    if (ellipse.beaconmajor > 0 && ellipse.beaconminor > 0) {
+                        sublayer.identifier = [NSString stringWithFormat:@"beacon_%i_%i", ellipse.beaconmajor, ellipse.beaconminor];
+                    } else {
+                        sublayer.identifier = child.identifier;
+                    }
+                } else {
+                    sublayer.identifier = child.identifier;
+                }
             }
 			
 			[layer addSublayer:sublayer];
